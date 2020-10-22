@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LocalStorageService } from 'src/app/OwnerModule/services/localstorage.service';
 import { ownerServices } from '../../services/ownerServices';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -48,7 +49,7 @@ export class OwnerLoginComponent implements OnInit {
     httpHeaders.append("content-type", "application/json")
     console.log(putData)
     return this.http.put(
-      'http://localhost:8057/api/login/verification', putData,
+      environment.api_url+'/api/login/verification', putData,
     )
     // .subscribe((res:any) => {
 
@@ -82,7 +83,7 @@ export class OwnerLoginComponent implements OnInit {
     httpHeaders.append("content-type", "application/json")
     console.log(postData)
     return this.http.post(
-      'http://localhost:8057/api/login/verification?mobileNumber=' + postData.mobileNumber, postData,
+      environment.api_url+'/api/login/verification?mobileNumber=' + postData.mobileNumber, postData,
     )
       .subscribe((res:any) => {
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SearchbarService } from '../../services/searchbar.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-paygate',
   templateUrl: './paygate.component.html',
@@ -23,7 +24,7 @@ export class PaygateComponent implements OnInit {
       amount: this.payuform.grandTotal
     }
     console.log(paymentPayload)
-    return this.http.post<any>('http://localhost:8057/api/payment-details', paymentPayload).subscribe(
+    return this.http.post<any>(environment.api_url+'/api/payment-details', paymentPayload).subscribe(
       data => {
         console.log(data);
         this.payuform.txnid = data.txnId;

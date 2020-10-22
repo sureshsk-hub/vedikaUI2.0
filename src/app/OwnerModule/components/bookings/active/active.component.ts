@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
  import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-active',
@@ -10,7 +11,7 @@ export class ActiveComponent implements OnInit {
   
 
   constructor(private http: HttpClient) { }
-  url="http://localhost:8057/api/recentlybooked?ownerId=kumar";
+  url=environment.api_url+"/api/recentlybooked?ownerId=kumar";
   httpData:any;
   ngOnInit() {
     this.http.get(this.url).subscribe(data => {
